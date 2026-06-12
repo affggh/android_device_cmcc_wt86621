@@ -15,17 +15,13 @@
 //
 
 cc_library_static {
-    name: "libinit_wt88047",
+    name: "libinit_wt86621",
     recovery_available: true,
-    srcs: ["init_wt88047.cpp"],
+    srcs: ["init_wt86621.cpp"],
     include_dirs: [
-        "system/core/base/include",
         "system/core/init",
-        "external/selinux/libselinux/include",
     ],
     static_libs: [
         "libbase",
-        "libselinux",
     ],
-    cflags: ["-Wall"]
 }

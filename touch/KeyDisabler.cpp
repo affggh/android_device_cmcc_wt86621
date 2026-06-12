@@ -27,7 +27,7 @@ namespace V1_0 {
 namespace implementation {
 
 constexpr const char kControlPath[] =
-    "/sys/bus/i2c/drivers/ft5x06_ts/5-0038/keypad_mode";
+    "/sys/devices/soc.0/78b9000.i2c/i2c-5/5-005d/keypad_mode";
 
 KeyDisabler::KeyDisabler() {
     mHasKeyDisabler = !access(kControlPath, F_OK);

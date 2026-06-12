@@ -54,38 +54,62 @@ vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegenc.so|ab7407926128697ab086a69f8834e1cf76932946
 
 # Camera actuator
-vendor/lib/libactuator_dw9714_13p1ba_h2x_camcorder.so
-vendor/lib/libactuator_dw9714_13p1ba_h2x_camera.so
-vendor/lib/libactuator_dw9714_13p1ba_h2x.so
+vendor/lib/libactuator_dw9714.so
 vendor/lib/libactuator_dw9714_camcorder.so
 vendor/lib/libactuator_dw9714_camera.so
-vendor/lib/libactuator_dw9714.so
-vendor/lib/libactuator_dw9714_meituosi_h2x_camcorder.so
-vendor/lib/libactuator_dw9714_meituosi_h2x_camera.so
-vendor/lib/libactuator_dw9714_meituosi_h2x.so
-vendor/lib/libactuator_dw9714_sikao_h2x_camcorder.so
-vendor/lib/libactuator_dw9714_sikao_h2x_camera.so
-vendor/lib/libactuator_dw9714_sikao_h2x.so
+vendor/lib/libactuator_dw9718s.so
 vendor/lib/libactuator_dw9718s_camcorder.so
 vendor/lib/libactuator_dw9718s_camera.so
-vendor/lib/libactuator_dw9718s.so
+vendor/lib/libactuator_dw9761_ofilm.so
+vendor/lib/libactuator_dw9761_ofilm_camcorder.so
+vendor/lib/libactuator_dw9761_ofilm_camera.so
+vendor/lib/libactuator_rohm_bu64243gwz.so
 vendor/lib/libactuator_rohm_bu64243gwz_camcorder.so
 vendor/lib/libactuator_rohm_bu64243gwz_camera.so
-vendor/lib/libactuator_rohm_bu64243gwz.so
-vendor/lib/libactuator_rohm_bu64243gwz_a11_camcorder.so
-vendor/lib/libactuator_rohm_bu64243gwz_a11_camera.so
-vendor/lib/libactuator_rohm_bu64243gwz_a11.so
-vendor/lib/libactuator_rohm_bu64243gwz_h2x_camcorder.so
-vendor/lib/libactuator_rohm_bu64243gwz_h2x_camera.so
-vendor/lib/libactuator_rohm_bu64243gwz_h2x.so
 
 # Camera chromatix
-vendor/lib/libchromatix_ov2680_common.so
-vendor/lib/libchromatix_ov2680_default_video.so
-vendor/lib/libchromatix_ov2680_snapshot.so
+vendor/lib/libchromatix_gc2355_8916_common.so
+vendor/lib/libchromatix_gc2355_8916_default_video.so
+vendor/lib/libchromatix_gc2355_8916_preview.so
+vendor/lib/libchromatix_imx219_q8n13a_common.so
+vendor/lib/libchromatix_imx219_q8n13a_default_video.so
+vendor/lib/libchromatix_imx219_q8n13a_liveshot.so
+vendor/lib/libchromatix_imx219_q8n13a_preview.so
+vendor/lib/libchromatix_imx219_q8n13a_snapshot.so
+vendor/lib/libchromatix_ov13850_common.so
+vendor/lib/libchromatix_ov13850_default_video.so
+vendor/lib/libchromatix_ov13850_hfr_120fps.so
+vendor/lib/libchromatix_ov13850_hfr_60fps.so
+vendor/lib/libchromatix_ov13850_hfr_90fps.so
+vendor/lib/libchromatix_ov13850_preview.so
+vendor/lib/libchromatix_ov13850_snapshot.so
 vendor/lib/libchromatix_ov2680_5987fhq_common.so
 vendor/lib/libchromatix_ov2680_5987fhq_default_video.so
+vendor/lib/libchromatix_ov2680_5987fhq_preview.so
 vendor/lib/libchromatix_ov2680_5987fhq_snapshot.so
+vendor/lib/libchromatix_ov2680_common.so
+vendor/lib/libchromatix_ov2680_default_video.so
+vendor/lib/libchromatix_ov2680_preview.so
+vendor/lib/libchromatix_ov2680_snapshot.so
+vendor/lib/libchromatix_ov5670_q5v41b_common.so
+vendor/lib/libchromatix_ov5670_q5v41b_default_video.so
+vendor/lib/libchromatix_ov5670_q5v41b_hfr_120fps.so
+vendor/lib/libchromatix_ov5670_q5v41b_hfr_60fps.so
+vendor/lib/libchromatix_ov5670_q5v41b_hfr_90fps.so
+vendor/lib/libchromatix_ov5670_q5v41b_liveshot.so
+vendor/lib/libchromatix_ov5670_q5v41b_preview.so
+vendor/lib/libchromatix_ov5670_q5v41b_snapshot.so
+vendor/lib/libchromatix_ov5670_q5v41b_video_hd.so
+vendor/lib/libchromatix_ov5670_q5v41b_zsl.so
+vendor/lib/libchromatix_ov8858_8916_common.so
+vendor/lib/libchromatix_ov8858_8916_default_video.so
+vendor/lib/libchromatix_ov8858_8916_hfr_120fps.so
+vendor/lib/libchromatix_ov8858_8916_hfr_60fps.so
+vendor/lib/libchromatix_ov8858_8916_hfr_90fps.so
+vendor/lib/libchromatix_ov8858_8916_liveshot.so
+vendor/lib/libchromatix_ov8858_8916_preview.so
+vendor/lib/libchromatix_ov8858_8916_snapshot.so
+vendor/lib/libchromatix_ov8858_8916_video_hd.so
 vendor/lib/libchromatix_ov8865_q8v18a_common.so
 vendor/lib/libchromatix_ov8865_q8v18a_default_video.so
 vendor/lib/libchromatix_ov8865_q8v18a_hfr_120fps.so
@@ -94,25 +118,29 @@ vendor/lib/libchromatix_ov8865_q8v18a_hfr_90fps.so
 vendor/lib/libchromatix_ov8865_q8v18a_liveshot.so
 vendor/lib/libchromatix_ov8865_q8v18a_preview.so
 vendor/lib/libchromatix_ov8865_q8v18a_snapshot.so
-vendor/lib/libchromatix_ov8865_qtech_common.so
-vendor/lib/libchromatix_ov8865_qtech_default_video.so
-vendor/lib/libchromatix_ov8865_qtech_hfr_120fps.so
-vendor/lib/libchromatix_ov8865_qtech_hfr_60fps.so
-vendor/lib/libchromatix_ov8865_qtech_hfr_90fps.so
-vendor/lib/libchromatix_ov8865_qtech_liveshot.so
-vendor/lib/libchromatix_ov8865_qtech_preview.so
-vendor/lib/libchromatix_ov8865_qtech_snapshot.so
-vendor/lib/libchromatix_ov8865_sunny_common.so
-vendor/lib/libchromatix_ov8865_sunny_default_video.so
-vendor/lib/libchromatix_ov8865_sunny_hfr_120fps.so
-vendor/lib/libchromatix_ov8865_sunny_hfr_60fps.so
-vendor/lib/libchromatix_ov8865_sunny_hfr_90fps.so
-vendor/lib/libchromatix_ov8865_sunny_liveshot.so
-vendor/lib/libchromatix_ov8865_sunny_preview.so
-vendor/lib/libchromatix_ov8865_sunny_snapshot.so
+vendor/lib/libchromatix_ov8865_q8v18a_video_hd.so
+vendor/lib/libchromatix_ov8865_q8v18a_zsl.so
+vendor/lib/libchromatix_s5k4h5_8916_common.so
+vendor/lib/libchromatix_s5k4h5_8916_default_video.so
+vendor/lib/libchromatix_s5k4h5_8916_hfr_120fps.so
+vendor/lib/libchromatix_s5k4h5_8916_hfr_60fps.so
+vendor/lib/libchromatix_s5k4h5_8916_hfr_90fps.so
+vendor/lib/libchromatix_s5k4h5_8916_liveshot.so
+vendor/lib/libchromatix_s5k4h5_8916_preview.so
+vendor/lib/libchromatix_s5k4h5_8916_snapshot.so
+vendor/lib/libchromatix_s5k4h5_8916_video_hd.so
+vendor/lib/libchromatix_sp2508_common.so
+vendor/lib/libchromatix_sp2508_default_video.so
+vendor/lib/libchromatix_sp2508_preview.so
+vendor/lib/libchromatix_sp2508_snapshot.so
+
 
 # Camera eeprom
+vendor/lib/libmmcamera_guangzhen_ov8858_eeprom.so
+vendor/lib/libmmcamera_lenovo_ov5670_eeprom.so
+vendor/lib/libmmcamera_s5k4h5_ofilm_eeprom.so
 vendor/lib/libmmcamera_sunny_q8v18a_eeprom.so
+vendor/lib/libmmcamera_wingtech_ov13850_eeprom.so
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw
@@ -121,9 +149,16 @@ etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw:vendor/firmware/cpp_firmware_v1_4_0.fw
 
 # Camera sensors
+vendor/lib/libmmcamera_gc2355_8916.so
+vendor/lib/libmmcamera_imx219_q8n13a.so
+vendor/lib/libmmcamera_ov13850.so
+vendor/lib/libmmcamera_ov2680.so
 vendor/lib/libmmcamera_ov2680_5987fhq.so
-vendor/lib/libmmcamera_ov2680_skuhf.so
+vendor/lib/libmmcamera_ov5670_q5v41b.so
+vendor/lib/libmmcamera_ov8858_8916.so
 vendor/lib/libmmcamera_ov8865_q8v18a.so
+vendor/lib/libmmcamera_s5k4h5_8916.so
+vendor/lib/libmmcamera_sp2508.so
 
 # DRM - from jalebi
 bin/qseecomd:vendor/bin/qseecomd|8d12dbee4e86a7af7ff76a9ff64c339adce8eb36
@@ -277,8 +312,9 @@ vendor/lib/libvoice-svc.so|fe8d2807b5b1a35310a9bcf80ceb4467503130b0
 
 # Sensors
 vendor/lib/libcalmodule_akm.so
-vendor/lib/libcalmodule_yamaha.so
 vendor/lib/libcalmodule_gyroscope.so
+vendor/lib/libcalmodule_senodia.so
+vendor/lib/libcalmodule_yamaha.so
 
 # Signed Venus (media) firmware
 etc/firmware/venus.b00:vendor/firmware/venus.b00

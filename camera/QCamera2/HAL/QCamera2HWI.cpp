@@ -1193,16 +1193,24 @@ int QCamera2HardwareInterface::openCamera()
                                               (void *) this);
 
     /* get max pic size for jpeg work buf calculation*/
-    for(i = 0; i < gCamCapability[mCameraId]->picture_sizes_tbl_cnt - 1; i++)
-    {
-      l_curr_width = gCamCapability[mCameraId]->picture_sizes_tbl[i].width;
-      l_curr_height = gCamCapability[mCameraId]->picture_sizes_tbl[i].height;
+    if (gCamCapability[mCameraId]->picture_sizes_tbl_cnt > 0 &&
+        gCamCapability[mCameraId]->picture_sizes_tbl_cnt <= MAX_SIZES_CNT) {
+        for(i = 0; i < gCamCapability[mCameraId]->picture_sizes_tbl_cnt - 1; i++)
+        {
+          l_curr_width = gCamCapability[mCameraId]->picture_sizes_tbl[i].width;
+          l_curr_height = gCamCapability[mCameraId]->picture_sizes_tbl[i].height;
 
-      if ((l_curr_width * l_curr_height) >
-        (m_max_pic_width * m_max_pic_height)) {
-        m_max_pic_width = l_curr_width;
-        m_max_pic_height = l_curr_height;
-      }
+          if ((l_curr_width * l_curr_height) >
+            (m_max_pic_width * m_max_pic_height)) {
+            m_max_pic_width = l_curr_width;
+            m_max_pic_height = l_curr_height;
+          }
+        }
+    } else {
+        ALOGE("%s: picture_sizes_tbl_cnt invalid (%zu), using default 1280x960 for JPEG init",
+              __func__, gCamCapability[mCameraId]->picture_sizes_tbl_cnt);
+        m_max_pic_width = 1280;
+        m_max_pic_height = 960;
     }
     //reset the preview and video sizes tables in case they were changed earlier
     copyList(savedSizes[mCameraId].all_preview_sizes, gCamCapability[mCameraId]->preview_sizes_tbl,
@@ -1406,6 +1414,32 @@ int QCamera2HardwareInterface::initCapabilities(uint32_t cameraId,
     }
     memcpy(gCamCapability[cameraId], DATA_PTR(capabilityHeap,0),
                                         sizeof(cam_capability_t));
+
+    /* mm-qcamera-daemon returns garbage capability data (all-zero enums,
+     * all-zero control structs). We cannot fix the proprietary daemon, so
+     * unconditionally zero all sensor-dependent counts. initDefaultParameters
+     * has comprehensive fallback values for every parameter. */
+    ALOGE("%s: Zeroing all capability counts (daemon returns garbage data)", __func__);
+    gCamCapability[cameraId]->preview_sizes_tbl_cnt = 0;
+    gCamCapability[cameraId]->video_sizes_tbl_cnt = 0;
+    gCamCapability[cameraId]->picture_sizes_tbl_cnt = 0;
+    gCamCapability[cameraId]->fps_ranges_tbl_cnt = 0;
+    gCamCapability[cameraId]->hfr_tbl_cnt = 0;
+    gCamCapability[cameraId]->supported_focus_modes_cnt = 0;
+    gCamCapability[cameraId]->supported_focus_algos_cnt = 0;
+    gCamCapability[cameraId]->supported_effects_cnt = 0;
+    gCamCapability[cameraId]->supported_flash_modes_cnt = 0;
+    gCamCapability[cameraId]->supported_scene_modes_cnt = 0;
+    gCamCapability[cameraId]->supported_white_balances_cnt = 0;
+    gCamCapability[cameraId]->supported_antibandings_cnt = 0;
+    gCamCapability[cameraId]->supported_aec_modes_cnt = 0;
+    gCamCapability[cameraId]->supported_preview_fmt_cnt = 0;
+    gCamCapability[cameraId]->supported_picture_fmt_cnt = 0;
+    gCamCapability[cameraId]->supported_raw_fmt_cnt = 0;
+    gCamCapability[cameraId]->max_num_focus_areas = 1;
+    gCamCapability[cameraId]->max_num_metering_areas = 1;
+    /* Fix camera position: daemon returns garbage, use cameraId (0=back, 1=front) */
+    gCamCapability[cameraId]->position = (cam_position_t)cameraId;
 
     //copy the preview sizes and video sizes lists because they
     //might be changed later

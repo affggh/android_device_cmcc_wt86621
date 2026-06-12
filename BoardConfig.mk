@@ -20,17 +20,19 @@ FORCE_32_BIT := true
 # Inherit from msm8916-common
 include device/cyanogen/msm8916-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/wingtech/wt88047
+DEVICE_PATH := device/cmcc/wt86621
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
 # Camera
-BOARD_CAMERA_SENSORS := ov2680_5987fhq ov8865_q8v18a ov2680_skuhf
+BOARD_CAMERA_SENSORS := gc2355_8916 s5k4h5_8916
+TARGET_USE_VENDOR_CAMERA_EXT := true
+USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-    /system/bin/cameraserver=22 \
-    /system/bin/mediaserver=22 \
-    /vendor/bin/mm-qcamera-daemon=22
+	/system/bin/mediaserver=22 \
+        /system/bin/cameraserver=22 \
+	/system/vendor/bin/mm-qcamera-daemon=22
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -62,6 +64,7 @@ BOARD_VENDORIMAGE_EXTFS_INODE_COUNT   := 4096
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE    := squashfs
 BOARD_VENDORIMAGE_JOURNAL_SIZE        := 0
 BOARD_VENDORIMAGE_SQUASHFS_COMPRESSOR := lz4
+BOARD_USES_VENDORIMAGE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -73,16 +76,16 @@ TARGET_NO_RPC := true
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_wt88047
-TARGET_RECOVERY_DEVICE_MODULES := libinit_wt88047
+TARGET_INIT_VENDOR_LIB := libinit_wt86621
+TARGET_RECOVERY_DEVICE_MODULES := libinit_wt86621
 
 # Kernel
 BOARD_DTBTOOL_ARGS := -2
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_KERNEL_SOURCE := kernel/wingtech/msm8916
-TARGET_KERNEL_CONFIG := lineageos_wt88047_defconfig
-BOARD_KERNEL_CMDLINE += phy-msm-usb.floated_charger_enable=1
+TARGET_KERNEL_CONFIG := lineageos_wt86621_defconfig
+BOARD_KERNEL_CMDLINE += phy-msm-usb.floated_charger_enable=1 androidboot.selinux=permissive
 
 # Power
 TARGET_HAS_NO_POWER_STATS := true
@@ -95,9 +98,15 @@ BOARD_NO_SECURE_DISCARD := true
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
 
+# Vendor security patch level
+VENDOR_SECURITY_PATCH := 2015-12-01
+
 # Shims
 TARGET_LD_SHIM_LIBS += \
     /vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so
 
 # inherit from the proprietary version
-include vendor/wingtech/wt88047/BoardConfigVendor.mk
+include vendor/cmcc/wt86621/BoardConfigVendor.mk
+
+# inherit from the proprietary version
+include vendor/cmcc/wt86621/BoardConfigVendor.mk
