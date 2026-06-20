@@ -26,12 +26,9 @@ DEVICE_PATH := device/cmcc/wt86621
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
 # Camera
-BOARD_CAMERA_SENSORS := gc2355_8916 s5k4h5_8916
-TARGET_USE_VENDOR_CAMERA_EXT := true
-USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
 	/system/bin/mediaserver=22 \
-        /system/bin/cameraserver=22 \
+  /system/bin/cameraserver=22 \
 	/system/vendor/bin/mm-qcamera-daemon=22
 
 # Charger
@@ -101,12 +98,14 @@ BOARD_SEPOLICY_DIRS += \
 # Vendor security patch level
 VENDOR_SECURITY_PATCH := 2015-12-01
 
+# Wi-Fi
+TARGET_PROVIDES_WCNSS_QMI := true
+
 # Shims
 TARGET_LD_SHIM_LIBS += \
-    /vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so
-
-# inherit from the proprietary version
-include vendor/cmcc/wt86621/BoardConfigVendor.mk
+    /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_atomic.so \
+    /system/vendor/lib/hw/camera.vendor.msm8916.so|libshim_atomic.so \
+    /system/vendor/lib/libmmcamera2_stats_modules.so|libshim_camera.so
 
 # inherit from the proprietary version
 include vendor/cmcc/wt86621/BoardConfigVendor.mk

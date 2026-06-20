@@ -59,14 +59,9 @@ TARGET_BOOTANIMATION_HALF_RES := true
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8916 \
-    libmm-qcamera \
-    libshim_camera \
-    Snap
-
-PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
-    camera.device@1.0-impl
+    camera.msm8916 \
+    Snap
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -130,6 +125,13 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/_hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/_hals.conf
+
+# Shims
+PRODUCT_PACKAGES += \
+    libshim_atomic \
+    libshim_camera \
+    libts_detected_face_hal \
+    libts_face_beautify_hal
 
 # Shipping API level (for CTS backward compatibility)
 PRODUCT_SHIPPING_API_LEVEL := 19
