@@ -8,8 +8,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.cpp.duplication=false \
-    persist.camera.hal.debug.mask=1 \
-    ro.camera.sensors=gc2355_8916,s5k4h5_8916
+    persist.camera.hal.debug.mask=1
 
 # Factory Reset Protection
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -28,4 +27,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.ecc_hard_1=112,911,110,122,119,120,000,118 \
     persist.radio.ecc_hard_count=1 \
     rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
-    ril.subscription.types=RUIM
+    ro.telephony.default_network=9,9
