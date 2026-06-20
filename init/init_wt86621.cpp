@@ -83,16 +83,4 @@ void vendor_load_properties()
 
     // Init a dummy BT MAC address, will be overwritten later
     property_override("ro.boot.btmacaddr", "00:00:00:00:00:00");
-
-    // ==========================================
-    // 强行注入默认全局 ADB、解除安全认证、覆盖 USB 状态
-    // ==========================================
-    property_override("ro.secure", "0");
-    property_override("ro.debuggable", "1");
-    property_override("ro.adb.secure", "0");
-    
-    // 同时干掉 system 层和 vendor 层的 USB 配置，强制锁死 adb
-    property_override("persist.sys.usb.config", "adb");
-    property_override("persist.vendor.usb.config", "adb");
-    property_override("sys.usb.config", "adb");
 }
