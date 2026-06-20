@@ -21,6 +21,11 @@ vendor/lib/libbtnv.so|b4b692e2a89f97677d66cb26152cade106bb1cc4
 
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
+lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so
+lib/libmmcamera_interface.so:vendor/lib/libmmcamera_interface.so
+lib/libmmjpeg_interface.so:vendor/lib/libmmjpeg_interface.so
+lib/libqomx_core.so:vendor/lib/libqomx_core.so
+lib/hw/camera.msm8916.so:vendor/lib/hw/camera.vendor.msm8916.so
 vendor/lib/libjpegdhw.so|e6fbda13a222eabec676ae8e0e1214810ccb7ab6
 vendor/lib/libjpegehw.so|17d0f41e191ae72b065ef70a092dd061185906f2
 vendor/lib/libmmcamera2_c2d_module.so
@@ -339,5 +344,5 @@ vendor/lib/libthermalioctl.so|c32eca3eb450e9bb0a70f15878253b2dad48e5c7
 # Widevine - from angler - OPR6.170623.017 factory image
 vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
 
-# WLAN
-lib/libwcnss_qmi.so:vendor/lib/libwcnss_qmi.so
+# BMS
+system/bin/vm_bms:vendor/bin/vm_bms
