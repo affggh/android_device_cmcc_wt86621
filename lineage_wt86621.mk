@@ -32,9 +32,3 @@ BUILD_FINGERPRINT="CMDC/M623C/M623C:5.1.1/LMY47V/02.03.29RPD:user/release-keys"
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="M623C-user 5.1.1 LMY47V 02.03.29RPD release-keys"
-
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    ro.debuggable=1 \
-    ro.adb.secure=0 \
-    persist.sys.usb.config=adb
