@@ -23,7 +23,7 @@
 # components.
 
 FORCE_32_BIT := true
-DEVICE_PATH := device/lenovo/a6000
+DEVICE_PATH := device/cmdc/wt86621
 
 #Bootloader
 TARGET_BOARD_PLATFORM := msm8916
@@ -43,11 +43,15 @@ TARGET_CPU_VARIANT := cortex-a53
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/zImage-dtb
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/Image.gz-dtb
+
+BOARD_KERNEL_CMDLINE += \
+    sched_enable_hmp=1 \
+    phy-msm-usb.floated_charger_enable=1
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
@@ -70,14 +74,16 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_THEME := portrait_hdpi
-TW_MAX_BRIGHTNESS := 100
-TW_DEFAULT_BRIGHTNESS := "80"
+TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := "200"
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_EXTRA_LANGUAGES := true
-TW_DEFAULT_LANGUAGE := en-US
+TW_DEFAULT_LANGUAGE := zh_CN
 TW_NO_SCREEN_TIMEOUT := true
-TW_NO_EXFAT := true
-TW_NO_USB_STORAGE := true
+TW_NO_EXFAT := false
+TW_NO_USB_STORAGE := false
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
-TW_CRYPTO_USE_SBIN_VOLD := true
+
+#adbd insecure
+BOARD_ALWAYS_INSECURE := true

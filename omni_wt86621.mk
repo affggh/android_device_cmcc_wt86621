@@ -23,7 +23,7 @@
 # components.
 
 # Release name
-PRODUCT_RELEASE_NAME := a6000
+PRODUCT_RELEASE_NAME := wt86621
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
@@ -53,12 +53,16 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := a6000
-PRODUCT_NAME := omni_a6000
-PRODUCT_BRAND := Lenovo
-PRODUCT_MODEL := A6000
-PRODUCT_MANUFACTURER := Lenovo
+PRODUCT_DEVICE := wt86621
+PRODUCT_NAME := omni_wt86621
+PRODUCT_BRAND := CMCC
+PRODUCT_MODEL := M623C
+PRODUCT_MANUFACTURER := Wingtech
 
 # Explicitly
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.keystore=msm8916
+
+# The kernel does not support aio with ffs.
+PRODUCT_PROPERTY_OVERRIDES += \
+	sys.usb.ffs.aio_compat=1
