@@ -8,8 +8,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.cpp.duplication=false \
-    persist.camera.hal.debug.mask=0 \
-    ro.camera.sensors=ov8865_q8v18a,ov2680_skuhf,ov2680_5987fhq
+    persist.camera.hal.debug.mask=0
 
 # Charger
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -29,4 +28,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.ecc_hard_1=112,911,110,122,119,120,000,118 \
     persist.radio.ecc_hard_count=1 \
     rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so \
-    ril.subscription.types=RUIM
+    ril.subscription.types=RUIM \
+    ro.telephony.default_network=9,9
+
+# IMS - VoLTE
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.data.iwlan.enable=true

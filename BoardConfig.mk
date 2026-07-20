@@ -20,13 +20,10 @@ FORCE_32_BIT := true
 # Inherit from msm8916-common
 include device/cyanogen/msm8916-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/xiaomi/wt88047x
+DEVICE_PATH := device/cmcc/wt86621
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
-
-# Camera
-BOARD_CAMERA_SENSORS := ov2680_5987fhq ov8865_q8v18a ov2680_skuhf
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
@@ -37,35 +34,37 @@ TARGET_SCREEN_DENSITY := 320
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
-BOARD_CACHEIMAGE_PARTITION_SIZE := 51200000
+BOARD_CACHEIMAGE_PARTITION_SIZE := 335544320
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1520000512
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 5840396288
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 5939100672
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_PARTITION_SIZE      := 102400000
 BOARD_VENDORIMAGE_EXTFS_INODE_COUNT   := 4096
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE    := squashfs
 BOARD_VENDORIMAGE_JOURNAL_SIZE        := 0
-BOARD_VENDORIMAGE_SQUASHFS_COMPRESSOR := lz4
+BOARD_VENDORIMAGE_SQUASHFS_COMPRESSOR := gzip
+#BOARD_VENDORIMAGE_SQUASHFS_COMPRESSOR_OPT := -Xhc
+BOARD_USES_VENDORIMAGE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # Fusion
-OVERRIDE_MAX_VALID_MAGNETIC_FIELD := 250 # uT
+#OVERRIDE_MAX_VALID_MAGNETIC_FIELD := 250 # uT
 
 # GPS
 TARGET_NO_RPC := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_wt88047x
-TARGET_RECOVERY_DEVICE_MODULES := libinit_wt88047x
+TARGET_INIT_VENDOR_LIB := libinit_wt86621
+TARGET_RECOVERY_DEVICE_MODULES := libinit_wt86621
 
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
-TARGET_KERNEL_SOURCE := kernel/wingtech/msm8916
-TARGET_KERNEL_CONFIG := lineageos_wt88047_defconfig
+TARGET_KERNEL_SOURCE := kernel/cmcc/msm8916
+TARGET_KERNEL_CONFIG := lineageos_wt86621_defconfig
 BOARD_KERNEL_CMDLINE += phy-msm-usb.floated_charger_enable=1
 
 # Recovery
@@ -78,7 +77,9 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Shims
 TARGET_LD_SHIM_LIBS += \
-    /vendor/lib/libmmcamera2_imglib_modules.so|libshim_camera.so
+    /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_atomic.so \
+    /system/vendor/lib/hw/camera.vendor.msm8916.so|libshim_atomic.so \
+    /system/vendor/lib/libmmcamera2_stats_modules.so|libshim_camera.so
 
 # inherit from the proprietary version
-include vendor/xiaomi/wt88047x/BoardConfigVendor.mk
+include vendor/cmcc/wt86621/BoardConfigVendor.mk

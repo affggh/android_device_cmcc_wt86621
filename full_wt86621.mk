@@ -13,13 +13,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-LOCAL_PATH := $(call my-dir)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-ifeq ($(TARGET_DEVICE), wt86621)
+# Inherit from wt86621 device
+$(call inherit-product, device/cmcc/wt86621/device.mk)
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
-include $(CLEAR_VARS)
-
-endif
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := wt86621
+PRODUCT_NAME := full_wt86621
+PRODUCT_BRAND := CMDC
+PRODUCT_MODEL := M623C
+PRODUCT_MANUFACTURER := CMCC

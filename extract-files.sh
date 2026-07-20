@@ -8,8 +8,8 @@
 
 set -e
 
-DEVICE=wt88047x
-VENDOR=xiaomi
+DEVICE=wt86621
+VENDOR=cmcc
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"

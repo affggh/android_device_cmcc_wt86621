@@ -1,1 +1,4 @@
 set_prop(system_server, compass_prop)
+
+# For watchdog signaling hal_light_default
+allow system_server hal_light_default:process signal;

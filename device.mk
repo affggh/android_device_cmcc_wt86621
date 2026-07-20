@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product, vendor/xiaomi/wt88047x/wt88047x-vendor.mk)
+$(call inherit-product, vendor/cmcc/wt86621/wt86621-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -35,7 +35,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdb/QRD_Speaker_cal.acdb:system/etc/acdbdata/QRD/QRD_Speaker_cal.acdb \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_qrd_skui.xml
+    $(LOCAL_PATH)/audio/mixer_paths_qrd_skuh.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_qrd_skuh.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
@@ -51,8 +51,8 @@ TARGET_BOOTANIMATION_HALF_RES := true
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
     camera.msm8916 \
-    libshim_camera \
     Snap
 
 PRODUCT_PACKAGES += \
@@ -80,7 +80,7 @@ PRODUCT_PACKAGES += \
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/ft5x06_ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ft5x06_ts.kl \
+    $(LOCAL_PATH)/keylayout/goodix-ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/goodix-ts.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
 
 # Lights
@@ -113,18 +113,25 @@ PRODUCT_PACKAGES += \
 
 # Sensor HAL
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl.wt88047x \
-    android.hardware.sensors@1.0-service.wt88047x \
+    android.hardware.sensors@1.0-impl.wt86621 \
+    android.hardware.sensors@1.0-service.wt86621 \
     calmodule.cfg \
     libcalmodule_common \
     sensors.msm8916 \
-    sensors.wt88047x
+    sensors.wt86621
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/_hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/_hals.conf
 
+# Shims
+PRODUCT_PACKAGES += \
+    libshim_atomic \
+    libshim_camera \
+    libts_detected_face_hal \
+    libts_face_beautify_hal
+
 # System Properties
-$(call inherit-product, device/xiaomi/wt88047x/system_prop.mk)
+$(call inherit-product, device/cmcc/wt86621/system_prop.mk)
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
@@ -134,8 +141,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
 # Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.wt88047x
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.touch@1.0-service.wt86621
 
 # USB ID
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -151,7 +158,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2017-01-01
+    ro.lineage.build.vendor_security_patch=2015-01-01
 
 # VNDK
 PRODUCT_COPY_FILES += \
@@ -164,7 +171,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_wlan_dictionary.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_wlan_dictionary.dat
 
 PRODUCT_PACKAGES += \
-    libwpa_client
+    libwpa_client \
+    libwcnss_qmi
 
 # Inherit the rest from msm8916-common
 $(call inherit-product, device/cyanogen/msm8916-common/msm8916.mk)

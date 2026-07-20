@@ -1,9 +1,9 @@
 cc_binary {
-    name: "vendor.lineage.touch@1.0-service.wt88047x",
+    name: "vendor.lineage.touch@1.0-service.wt86621",
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
-    init_rc: ["vendor.lineage.touch@1.0-service.wt88047x.rc"],
-    vintf_fragments: ["vendor.lineage.touch@1.0-service.wt88047x.xml"],
+    init_rc: ["vendor.lineage.touch@1.0-service.wt86621.rc"],
+    vintf_fragments: ["vendor.lineage.touch@1.0-service.wt86621.xml"],
     srcs: ["service.cpp", "KeyDisabler.cpp"],
     shared_libs: [
         "libbase",
